@@ -1,5 +1,5 @@
 import React from 'react';
-import EventLA from './Event';
+import ChangeBackgroundColor from './ChangeBackgroundColor';
 
 class App extends React.Component{
   constructor(props){
@@ -15,7 +15,8 @@ class App extends React.Component{
       <div>
         <p>
           Hi {this.state.name}! 
-        </p> <EventLA />
+        </p> 
+        <ChangeBackgroundColor />
       </div>
     )
   }
