@@ -1,5 +1,5 @@
 import React from 'react';
-import Clock from './clock';
+import EventLA from './Event';
 
 class App extends React.Component{
   constructor(props){
@@ -15,7 +15,7 @@ class App extends React.Component{
       <div>
         <p>
           Hi {this.state.name}! 
-        </p>   <Clock />
+        </p> <EventLA />
       </div>
     )
   }
