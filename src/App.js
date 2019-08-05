@@ -1,10 +1,9 @@
 import React from 'react';
-import ChangeBackgroundColor from './ChangeBackgroundColor';
+import Products from './products';
 
 class App extends React.Component{
   constructor(props){
     super(props)
-
     this.state = {
       name: "Mridul Gogia"
     }
@@ -16,7 +15,7 @@ class App extends React.Component{
         <p>
           Hi {this.state.name}! 
         </p> 
-        <ChangeBackgroundColor />
+        <Products />
       </div>
     )
   }
