@@ -5,9 +5,11 @@ export default class Filters extends React.Component{
         return (
             <div>
                 <form>
-                    <input type="text" placeholder="Search...." />
+                    <input type="text" placeholder="Search...." 
+                    value={this.props.filterText} />
                     <p>
-                        <input type="checkbox" /> Show only in stock
+                        <input type="checkbox" checked={this.props.inStockOnly} /> 
+                        Show only in stock
                     </p>
                 </form>
             </div>

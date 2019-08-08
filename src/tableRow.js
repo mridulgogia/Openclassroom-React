@@ -5,7 +5,7 @@ class TableRows extends Component{
         return (
                 <tr>
                     <td>
-                        <span className={this.props.stocked ? " " : 'ProductRow-out-of-stock'}>
+                        <span className={this.props.product.stocked ? "" : 'ProductRow-out-of-stock'}>
                             {this.props.product.name}
                         </span>
                     </td>
