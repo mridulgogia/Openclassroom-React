@@ -20,6 +20,29 @@ var PRODUCTS = {
             inStockOnly: false,
             products: PRODUCTS
         }
+        this.changeEvent = this.changeEvent.bind(this);
+        this.handleDestroy = this.handleDestroy.bind(this);
+        this.saveProducts = this.saveProducts.bind(this);
+    }
+
+    changeEvent(filterInput){
+        this.setState(filterInput)
+    }
+
+    saveProducts(product) {
+        product.id = new Date().getTime();
+        this.setState( (prevState) => {
+            let products = prevState.products;
+            products[product.id] = product;
+            return {products};
+        });
+    }
+    handleDestroy(productId) {
+        this.setState( (prevState) => {
+            let products = prevState.products;
+            delete products[productId];
+            return {products};
+        }) 
     }
      
     render(){
@@ -28,15 +51,17 @@ var PRODUCTS = {
                 <Filters 
                 filterText={this.state.filterText} 
                 inStockOnly= {this.state.inStockOnly}
+                onFilter= {this.changeEvent}
                 />
                 <ProductTable 
                 products= {this.state.products}
                 filterText={this.state.filterText} 
                 inStockOnly= {this.state.inStockOnly}
+                onDestroy = {this.handleDestroy}
                  />
-                <ProductForm />
+                <ProductForm onSave={this.saveProducts} />
             </div>
-        )
+        );
     }
 }
 

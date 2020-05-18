@@ -12,6 +12,8 @@ class ProductTable extends Component{
             }
         };
         this.sortByKeyAndOrder = this.sortByKeyAndOrder.bind(this);
+        this.handleSort = this.handleSort = this.handleSort.bind(this);
+        this.handleDestroy = this.handleDestroy.bind(this);
     }
 
     sortByKeyAndOrder(objectA, objectB){
@@ -30,8 +32,20 @@ class ProductTable extends Component{
     }
 
     sortProducts(){
-        let productsAsArray = Object.keys(this.props.products).map( (pid) =>  this.props.products[pid]);
+        let productsAsArray = Object.keys(this.props.products).map( (pid) =>  
+            this.props.products[pid]);
         return productsAsArray.sort(this.sortByKeyAndOrder);
+    }
+    handleDestroy(id) {
+        this.props.onDestroy(id);
+    }
+    handleSort(column, direction) {
+        this.setState({
+            sort: {
+                column: column,
+                direction: direction
+            }
+        });
     }
     render(){
         let rows = [] ;
@@ -50,11 +64,13 @@ class ProductTable extends Component{
                     <thead>
                         <tr>
                          <TableHeader 
-                       currentSort = {this.state.sort}
-                       column="Name" />
+                            onSort = {this.handleSort}
+                            currentSort ={this.state.sort}
+                            column="name" />
                          <TableHeader
-                          currentSort = {this.state.sort} 
-                          column="Price" />
+                           onSort = {this.handleSort}
+                           currentSort ={this.state.sort}
+                           column="Price" />
                         </tr>
                     </thead>
                     <tbody>
